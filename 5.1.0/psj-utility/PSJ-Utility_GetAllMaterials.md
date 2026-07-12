@@ -1,0 +1,41 @@
+---
+id: JPT-GetAllMaterials
+title: JPT.GetAllMaterials()
+author: TechnoStar Co., Ltd.
+author_url: https://www.e-technostar.com/
+description: Get all the information of all existing user materials
+---
+
+## Description
+
+Get all the information of all existing user materials.
+
+## Syntax
+
+```psj
+JPT.GetAllMaterials()
+```
+
+## Inputs
+
+This utility function does not require any input value.
+
+## Return Code
+
+A _[MaterialVector](../data-type/psj-utility/pre-utility/built-in-types/MaterialVector)_ object or _List of [DMaterial](../data-type/psj-utility/pre-utility/built-in-types/DMaterial)_ objects containing all the information of all the existing user materials.
+
+## Sample Code
+
+```psj {11}
+# Prepare Post model
+samplePath = JPT.GetProgramPath() + "SampleData\\Post\\Static_Renkon.op2"
+Home.ImportResults.Nastran(strPath= samplePath, dFaceAngle=60.16, dEdgeAngle=60.16, bReadLoadAndConstraint=True, 
+                            bReadConnection=True, bCreateResultsAtMidNode=True)
+# Convert to Pre
+data = Tools.ToPre(strName="Static_Renkon", ilOptions=[0, 1, 2, 3, 4])
+JPT.SetActiveDocumentByName("Static_Renkon_Converted_Pre",1)
+# Get all user materials
+userMat = JPT.GetAllMaterials()
+JPT.Debugger(userMat)
+JPT.Debugger(userMat[0])
+```

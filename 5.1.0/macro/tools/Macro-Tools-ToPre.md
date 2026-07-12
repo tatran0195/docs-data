@@ -1,0 +1,41 @@
+---
+id: ToPre
+title: ToPre()
+author: TechnoStar Co., Ltd.
+authorURL: https://www.e-technostar.com/
+---
+
+## Description
+
+Convert Post document to Pre document.
+
+## Syntax
+
+```psj
+ToPre(string docName, int[] options)
+```
+
+## Inputs
+
+### `1. string`
+
+The name of target document to convert.
+
+### `2. int []`
+
+The option corresponding to the number specified in the list is turned on.
+- 0: Takes over Groups
+- 1: Takes over Boundary Conditions
+- 2: Takes over Connections
+- 3: Takes over Local Coordinates
+- 4: Takes over Properties
+
+## Return Code
+
+Nothing.
+
+## Sample Code
+
+```psj
+ToPre("Jupiter1", [0, 1, 2, 3, 4])
+```
